@@ -1,0 +1,1229 @@
+<div class="form-container">
+  <div class="form">
+    <div class="row container-dimensions">
+      <div class="col-6">
+        <div class="p-inputgroup">
+          <span class="p-float-label">
+            <input
+              id="first-name"
+              type="text"
+              pInputText
+              [(ngModel)]="firstName"
+              [disabled]= "true"
+            />
+            <label for="float-input">First Name as Aadhar*</label>
+          </span>
+        </div>
+      </div>
+    
+      <div class="col-6">
+        <div class="p-inputgroup">
+          <span class="p-float-label">
+            <input
+              id="last-name"
+              type="text"
+              pInputText
+              [(ngModel)]="lastName"
+              [disabled]= "true"
+            />
+            <label for="float-input">Last Name as Aadhar*</label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row container-dimensions">
+      <div class="col-6">
+        <div class="p-inputgroup">
+          <span class="p-float-label">
+            <input
+              id="email"
+              type="email"
+              pInputText
+              required
+              [(ngModel)]="email"
+              [disabled]= "true"
+            />
+            <label for="float-input">Email*</label>
+          </span>
+        </div>
+      </div>
+    
+      <div class="col-6">
+        <div class="p-inputgroup">
+          <span class="p-float-label">
+            <input
+              id="mobile-number"
+              type="text"
+              pInputText
+              [(ngModel)]="phoneNo"
+              [disabled]= "true"
+            />
+            <label for="float-input">Mobile Number as Aadhar*</label>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row container-dimensions">
+      <div class="col-10">
+        <div class="gender-container">
+          <div class="radio-button-title">Gender as Aadhar*</div>
+          <p-radioButton
+            name="gender"
+            value="Male"
+            label="Male"
+            [(ngModel)]="gender"
+            [disabled]= "true"
+          ></p-radioButton>
+          <p-radioButton
+            name="gender"
+            value="Female"
+            label="Female"
+            [(ngModel)]="gender"
+            [disabled]= "true"
+          ></p-radioButton>
+          <p-radioButton
+            name="gender"
+            value="Other"
+            label="Other"
+            [(ngModel)]="gender"
+            [disabled]= "true"
+          ></p-radioButton>
+        </div>
+      </div>
+    </div>
+    <div class="row container-dimensions">
+      <div class="col-6">
+        <div class="gender-container">
+          <div class="radio-button-title">Dose*</div>
+          <p-radioButton
+            name="dose"
+            value="First"
+            label="First"
+            [(ngModel)]="dose"
+            [disabled]= "true"
+          ></p-radioButton>
+          <p-radioButton
+            name="dose"
+            value="Second"
+            label="Second"
+            [(ngModel)]="dose"
+            [disabled]= "true"
+          ></p-radioButton>
+        </div>
+      </div>
+      <div
+        class="col-6"
+         *ngIf="editedMemberForm.get('dose')?.value === 'Second'"
+      >
+        <label>Previous Vaccine Type</label>
+        <p-dropdown
+          [options]="previousVaccineTypeOptions"
+          optionLabel="label"
+          optionValue="value"
+          [style]="{ width: '100%' }"
+          [(ngModel)]="previousVaccineType"
+          [disabled]="true"
+        ></p-dropdown>
+      </div>
+    </div>
+    <div class="row container-dimensions">
+      <div class="col-6">
+
+        <p-dropdown
+          placeholder="Id Proof"
+          [options]="idProof"
+          [(ngModel)]="primaryMemberIdProof"
+          optionLabel="label"
+          optionValue="value"
+          [style]="{ width: '100%' }"
+          [disabled]="true"
+        ></p-dropdown>
+   </div>
+      <div class="col-6">
+        <div class="p-inputgroup">
+          <span class="p-float-label">
+            <input id="idno" type="text" pInputText  [(ngModel)]="idNo" [disabled]="true"/>
+            <label for="float-input">Id Number</label>
+          </span>
+        </div>
+      </div>
+    
+
+    </div>
+    <div class="row container-dimensions">
+      <div class="col-6">
+        <p-dropdown
+          placeholder="Location*"
+          [options]="backupTypeDropdownOptions"
+          optionLabel="label"
+          optionValue="value"
+          [style]="{ width: '100%' }"
+          [(ngModel)]="location"
+          [disabled]= "true"
+        ></p-dropdown>
+      </div>
+    
+      <div class="col-6">
+        <span class="p-float-label">
+          <input
+            id="year-of-birth"
+            type="number"
+            pInputText
+            [(ngModel)]="yob"
+            [disabled]= "true"
+          />
+          <label for="float-input">Year of Birth*</label>
+        </span>
+      </div>
+    </div>
+    
+    <div class="row container-dimensions">
+      <div class="col-6">
+        <div class="registered-container">
+          <span class="radio-button-title">Registered in CoWIN?*</span>
+          <p-radioButton
+            name="registeredInCowin"
+            [value]=true
+            label="Yes"
+            [(ngModel)]="registeredInCowin"
+            [disabled]= "true"
+          ></p-radioButton>
+          <p-radioButton
+            name="registeredInCowin"
+            [value]=false
+            label="No"
+            [(ngModel)]="registeredInCowin"
+            [disabled]= "true"
+          ></p-radioButton>
+        </div>
+      </div>
+      <div
+        class="col-6"
+        *ngIf="editedMemberForm.get('registeredInCowin')?.value === true"
+      >
+        <div class="p-inputgroup">
+          <span class="p-float-label">
+            <input
+              id="beneficiaryReferenceId"
+              type="number"
+              pInputText
+              [(ngModel)]="beneficiaryReferenceId"
+              [disabled]= "true"
+            />
+            <label for="float-input">Beneficiary ReferenceId</label>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row member-container-title">
+    <div class="col-4">
+      <p style="float: left; margin-top: revert">Registering for:</p>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+      <button
+        pButton
+        style="float: right"
+        type="button"
+        label="+ Add Member"
+        class="p-button-raised p-button-text"
+        (click)="visibleSidebar2 = true"
+        [disabled]="totalMembers >= 5"
+      ></button>
+    </div>
+  </div>
+  <div class="members-container">
+    <div
+      class="row hide-column seperator"
+      [ngClass]="{ 'show-fields': showColumn[0] }"
+    >
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="first-name"
+            type="text"
+            pInputText
+            [(ngModel)]="firstName"
+            [disabled]="true"
+          />
+          <label for="float-input">First Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="last-name"
+            type="text"
+            pInputText
+            [(ngModel)]="lastName"
+            [disabled]="true"
+          />
+          <label for="float-input">Last Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="mobile-number"
+            type="text"
+            pInputText
+            [(ngModel)]="phoneNo"
+            [disabled]="true"
+          />
+          <label for="float-input">Mobile Number as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3 content-alignment">
+        <button
+          pButton
+          type="button"
+          label="Delete"
+          class="p-button-outlined p-button-danger"
+          (click)="deleteFirstRecord()"
+          [disabled]="totalMembers === 0"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Edit"
+          class="p-button-outlined p-button-danger hidden-edit-button"
+        ></button>
+      </div>
+    </div>
+    <div
+      class="row hide-column seperator"
+      [ngClass]="{ 'show-fields': totalMembers>=1  }"
+    >
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="first-name"
+            type="text"
+            pInputText
+            [(ngModel)]="firstName1"
+            [disabled]="true"
+          />
+          <label for="float-input">First Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="last-name"
+            type="text"
+            pInputText
+            [(ngModel)]="lastName1"
+            [disabled]="true"
+          />
+          <label for="float-input">Last Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="mobile-number"
+            type="number"
+            pInputText
+            [(ngModel)]="mobileNumber1"
+            [disabled]="true"
+          />
+          <label for="float-input">Mobile Number as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3 content-alignment">
+        <button
+          pButton
+          type="button"
+          label="Delete"
+          [disabled]="totalMembers === 1 && showColumn[0] === false"
+          class="p-button-outlined p-button-danger"
+          (click)="confirm2(1)"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Edit"
+          class="p-button-outlined p-button-info"
+          (click)="editRecord(1)"
+        ></button>
+      </div>
+    </div>
+    <div
+      class="row hide-column seperator"
+      [ngClass]="{ 'show-fields': totalMembers>=2 }"
+    >
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="first-name"
+            type="text"
+            pInputText
+            [(ngModel)]="firstName2"
+            [disabled]="true"
+          />
+          <label for="float-input">First Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="last-name"
+            type="text"
+            pInputText
+            [(ngModel)]="lastName2"
+            [disabled]="true"
+          />
+          <label for="float-input">Last Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="mobile-number"
+            type="number"
+            pInputText
+            [(ngModel)]="mobileNumber2"
+            [disabled]="true"
+          />
+          <label for="float-input">Mobile Number as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3 content-alignment">
+        <button
+          pButton
+          type="button"
+          label="Delete"
+          class="p-button-outlined p-button-danger"
+          (click)="confirm2(2)"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Edit"
+          class="p-button-outlined p-button-info"
+          (click)="editRecord(2)"
+        ></button>
+      </div>
+    </div>
+    <div
+      class="row hide-column seperator"
+      [ngClass]="{ 'show-fields': totalMembers>=3 }"
+    >
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="first-name"
+            type="text"
+            pInputText
+            [(ngModel)]="firstName3"
+            [disabled]="true"
+          />
+          <label for="float-input">First Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="last-name"
+            type="text"
+            pInputText
+            [(ngModel)]="lastName3"
+            [disabled]="true"
+          />
+          <label for="float-input">Last Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="mobile-number"
+            type="number"
+            pInputText
+            [(ngModel)]="mobileNumber3"
+            [disabled]="true"
+          />
+          <label for="float-input">Mobile Number as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3 content-alignment">
+        <button
+          pButton
+          type="button"
+          label="Delete"
+          class="p-button-outlined p-button-danger"
+          (click)="confirm2(3)"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Edit"
+          class="p-button-outlined p-button-info"
+          (click)="editRecord(3)"
+        ></button>
+      </div>
+    </div>
+    <div
+      class="row hide-column seperator"
+      [ngClass]="{ 'show-fields': totalMembers>=4 }"
+    >
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="first-name"
+            type="text"
+            pInputText
+            [(ngModel)]="firstName4"
+            [disabled]="true"
+          />
+          <label for="float-input">First Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="last-name"
+            type="text"
+            pInputText
+            [(ngModel)]="lastName4"
+            [disabled]="true"
+          />
+          <label for="float-input">Last Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="mobile-number"
+            type="number"
+            pInputText
+            [(ngModel)]="mobileNumber4"
+            [disabled]="true"
+          />
+          <label for="float-input">Mobile Number as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3 content-alignment">
+        <button
+          pButton
+          type="button"
+          label="Delete"
+          class="p-button-outlined p-button-danger"
+          (click)="confirm2(4)"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Edit"
+          class="p-button-outlined p-button-info"
+          (click)="editRecord(4)"
+        ></button>
+      </div>
+    </div>
+    <div
+      class="row hide-column seperator"
+      [ngClass]="{ 'show-fields': totalMembers>=5 }"
+    >
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="first-name"
+            type="text"
+            pInputText
+            [(ngModel)]="firstName5"
+            [disabled]="true"
+          />
+          <label for="float-input">First Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="last-name"
+            type="text"
+            pInputText
+            [(ngModel)]="lastName5"
+            [disabled]="true"
+          />
+          <label for="float-input">Last Name as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3">
+        <span class="p-float-label">
+          <input
+            id="mobile-number"
+            type="number"
+            pInputText
+            [(ngModel)]="mobileNumber5"
+            [disabled]="true"
+          />
+          <label for="float-input">Mobile Number as Aadhar*</label>
+        </span>
+      </div>
+      <div class="col-3 content-alignment">
+        <button
+          pButton
+          type="button"
+          label="Delete"
+          class="p-button-outlined p-button-danger"
+          (click)="confirm2(5)"
+        ></button>
+
+        <button
+          pButton
+          type="button"
+          label="Edit"
+          class="p-button-outlined p-button-info"
+          (click)="editRecord(5)"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!---add form-->
+<p-sidebar
+  [(visible)]="visibleSidebar2"
+  position="right"
+  [baseZIndex]="10000"
+  [style]="{ width: '50%' }"
+>
+  <div class="header-sidebar">
+    <h3>Add Member</h3>
+  </div>
+  <p-toast></p-toast>
+  <div class="sidebar-form-container">
+    <form [formGroup]="editedMemberForm">
+      <div class="row container-dimensions">
+        <div class="col-6 pt-25">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="first-name"
+                type="text"
+                pInputText
+                formControlName="firstName"
+              />
+              <label for="float-input">First Name as Aadhar*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="showFormControlInvalid(editedMemberForm.get('firstName')!)"
+            class="error-block"
+          >
+            <div
+              *ngIf="editedMemberForm.get('firstName')?.errors?.required"
+              class="error-msg"
+            >
+              First Name is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 pt-25">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="last-name"
+                type="text"
+                pInputText
+                formControlName="lastName"
+              />
+              <label for="float-input">Last Name as Aadhar*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="showFormControlInvalid(editedMemberForm.get('lastName')!)"
+            class="error-block"
+          >
+            <div
+              *ngIf="editedMemberForm.get('lastName')?.errors?.required"
+              class="error-msg"
+            >
+              Last Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="email"
+                type="email"
+                pInputText
+                formControlName="email"
+                required
+              />
+              <label for="float-input">Email*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="showFormControlInvalid(editedMemberForm.get('email')!)"
+            class="error-block"
+          >
+            <div
+              *ngIf="editedMemberForm.get('email')?.errors?.required"
+              class="error-msg"
+            >
+              Email is required
+            </div>
+            <div
+              *ngIf="editedMemberForm.get('email')?.errors?.email"
+              class="error-msg"
+            >
+              Email not valid
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="mobile-number"
+                type="number"
+                pInputText
+                formControlName="phoneNo"
+              />
+              <label for="float-input">Mobile Number as Aadhar*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              showFormControlInvalid(editedMemberForm.get('phoneNo')!)
+            "
+            class="error-block"
+          >
+            <div
+              *ngIf="editedMemberForm.get('phoneNo')?.errors?.required"
+              class="error-msg"
+            >
+              Mobile Number is required
+            </div>
+            <div
+              *ngIf="
+                editedMemberForm.get('phoneNo')?.errors?.min ||
+                editedMemberForm.get('phoneNo')?.errors?.max
+              "
+              class="error-msg"
+            >
+              Mobile number must be of 10 digits
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-10">
+          <div class="gender-container">
+            <div class="radio-button-title">Gender as Aadhar*</div>
+            <p-radioButton
+              name="gender"
+              value="Male"
+              label="Male"
+              formControlName="gender"
+            ></p-radioButton>
+            <p-radioButton
+              name="gender"
+              value="Female"
+              label="Female"
+              formControlName="gender"
+            ></p-radioButton>
+            <p-radioButton
+              name="gender"
+              value="Other"
+              label="Other"
+              formControlName="gender"
+            ></p-radioButton>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <div class="gender-container">
+            <div class="radio-button-title">Dose*</div>
+            <p-radioButton
+              name="dose"
+              value="First"
+              label="First"
+              formControlName="dose"
+            ></p-radioButton>
+            <p-radioButton
+              name="dose"
+              value="Second"
+              label="Second"
+              formControlName="dose"
+            ></p-radioButton>
+          </div>
+        </div>
+        <div
+          class="col-6"
+          *ngIf="editedMemberForm.get('dose')?.value === 'Second'"
+        >
+          <label>Previous Vaccine Type</label>
+          <p-dropdown
+            [options]="previousVaccineTypeOptions"
+            formControlName="previousVaccineType"
+            optionLabel="label"
+            optionValue="value"
+            [style]="{ width: '100%' }"
+          ></p-dropdown>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <p-dropdown
+          placeholder="Id Proof"
+          [options]="idProof"
+          formControlName="idProof"
+          optionLabel="label"
+          optionValue="value"
+          [style]="{ width: '100%' }"
+        ></p-dropdown>
+        </div>
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input id="idno" type="text" pInputText formControlName="idNo" />
+              <label for="float-input">Id Number</label>
+            </span>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="year-of-birth"
+                type="number"
+                pInputText
+                formControlName="yob"
+              />
+              <label for="float-input">Year of Birth*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              showFormControlInvalid(editedMemberForm.get('yob')!)
+            "
+            class="error-block"
+          >
+            <div
+              *ngIf="editedMemberForm.get('yob')?.errors?.required"
+              class="error-msg"
+            >
+              Year of Birth is required
+            </div>
+            <div
+              *ngIf="
+                editedMemberForm.get('yob')?.errors?.min ||
+                editedMemberForm.get('yob')?.errors?.max
+              "
+              class="error-msg"
+            >
+              Enter a valid year
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-12">
+          <div class="registered-container">
+            <span class="radio-button-title">Registered in CoWIN?*</span>
+            <p-radioButton
+              name="registeredInCowin"
+              [value]=true
+              label="Yes"
+              formControlName="registeredInCowin"
+              (onClick) = "setMemberFormValidator('Yes')"
+            ></p-radioButton>
+            <p-radioButton
+              name="registeredInCowin"
+              [value]=false
+              label="No"
+              formControlName="registeredInCowin"
+              (onClick) = "setMemberFormValidator('No')"
+            ></p-radioButton>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div
+          class="col-12"
+          style="padding-top: 20px;"
+          *ngIf="editedMemberForm.get('registeredInCowin')?.value === true"
+        >
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="beneficiaryReferenceId"
+                type="number"
+                pInputText
+                formControlName="beneficiaryReferenceId"
+              />
+              <label for="float-input">Beneficiary ReferenceId</label>
+            </span>
+          </div>
+          <div
+          *ngIf="showFormControlInvalid(editedMemberForm.get('beneficiaryReferenceId')!)"
+          class="error-block"
+        >
+          <div
+            *ngIf="editedMemberForm.get('beneficiaryReferenceId')?.errors?.required"
+            class="error-msg"
+          >
+            Beneficiary Reference Id is required
+          </div>
+        </div>
+        </div>
+      </div>
+    </form>
+    <div class="submit-button-add-members">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Add"
+        class="p-button-outlined p-button-success"
+        (click)="addMemberRecord()"
+      ></button>
+    </div>
+  </div>
+</p-sidebar>
+
+
+<!---Edit form-->
+<p-sidebar
+  [(visible)]="visibleSidebar3"
+  position="right"
+  [baseZIndex]="10000"
+  [style]="{ width: '50%' }"
+>
+
+  <div class="header-sidebar">
+    <h3>Update Member</h3>
+  </div>
+  <div class="sidebar-form-container">
+    <form [formGroup]="updateEditedMemberForm">
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="first-name"
+                type="text"
+                pInputText
+                formControlName="firstName"
+              />
+              <label for="float-input">First Name as Aadhar*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              showFormControlInvalid(updateEditedMemberForm.get('firstName')!)
+            "
+            class="error-block"
+          >
+            <div
+              *ngIf="updateEditedMemberForm.get('firstName')?.errors?.required"
+              class="error-msg"
+            >
+              First Name is required
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="last-name"
+                type="text"
+                pInputText
+                formControlName="lastName"
+              />
+              <label for="float-input">Last Name*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              showFormControlInvalid(updateEditedMemberForm.get('lastName')!)
+            "
+            class="error-block"
+          >
+            <div
+              *ngIf="updateEditedMemberForm.get('lastName')?.errors?.required"
+              class="error-msg"
+            >
+              Last Name is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="email"
+                type="email"
+                pInputText
+                formControlName="email"
+                required
+              />
+              <label for="float-input">Email*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              showFormControlInvalid(updateEditedMemberForm.get('email')!)
+            "
+            class="error-block"
+          >
+            <div
+              *ngIf="updateEditedMemberForm.get('email')?.errors?.required"
+              class="error-msg"
+            >
+              Email is required
+            </div>
+            <div
+              *ngIf="updateEditedMemberForm.get('email')?.errors?.email"
+              class="error-msg"
+            >
+              Email not valid
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="mobile-number"
+                type="number"
+                pInputText
+                formControlName="phoneNo"
+              />
+              <label for="float-input">Mobile Number as Aadhar*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              showFormControlInvalid(
+                updateEditedMemberForm.get('phoneNo')!
+              )
+            "
+            class="error-block"
+          >
+            <div
+              *ngIf="
+                updateEditedMemberForm.get('phoneNo')?.errors?.required
+              "
+              class="error-msg"
+            >
+              Mobile Number is required
+            </div>
+            <div
+              *ngIf="
+                updateEditedMemberForm.get('phoneNo')?.errors?.min ||
+                updateEditedMemberForm.get('phoneNo')?.errors?.max
+              "
+              class="error-msg"
+            >
+              Mobile number must be of 10 digits
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-10">
+          <div class="gender-container">
+            <div class="radio-button-title">Gender as Aadhar*</div>
+            <p-radioButton
+              name="gender"
+              value="Male"
+              label="Male"
+              formControlName="gender"
+            ></p-radioButton>
+            <p-radioButton
+              name="gender"
+              value="Female"
+              label="Female"
+              formControlName="gender"
+            ></p-radioButton>
+            <p-radioButton
+              name="gender"
+              value="Other"
+              label="Other"
+              formControlName="gender"
+            ></p-radioButton>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <div class="gender-container">
+            <div class="radio-button-title">Dose*</div>
+            <p-radioButton
+              name="dose"
+              value="First"
+              label="First"
+              formControlName="dose"
+            ></p-radioButton>
+            <p-radioButton
+              name="dose"
+              value="Second"
+              label="Second"
+              formControlName="dose"
+            ></p-radioButton>
+          </div>
+        </div>
+        <div
+          class="col-6"
+          *ngIf="updateEditedMemberForm.get('dose')?.value === 'Second'"
+        >
+          <label>Previous Vaccine Type</label>
+          <p-dropdown
+            [options]="previousVaccineTypeOptions"
+            formControlName="previousVaccineType"
+            optionLabel="label"
+            optionValue="value"
+            [style]="{ width: '100%' }"
+          ></p-dropdown>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <p-dropdown
+          placeholder="Id Proof"
+          [options]="idProof"
+          formControlName="idProof"
+          optionLabel="label"
+          optionValue="value"
+          [style]="{ width: '100%' }"
+        ></p-dropdown>
+        </div>
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input id="idno" type="text" pInputText formControlName="idNo" />
+              <label for="float-input">Id Number</label>
+            </span>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-6">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="year-of-birth"
+                type="number"
+                pInputText
+                formControlName="yob"
+              />
+              <label for="float-input">Year of Birth*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="
+              showFormControlInvalid(
+                updateEditedMemberForm.get('yob')!
+              )
+            "
+            class="error-block"
+          >
+            <div
+              *ngIf="
+                updateEditedMemberForm.get('yob')?.errors?.required
+              "
+              class="error-msg"
+            >
+              Year of Birth is required
+            </div>
+            <div
+              *ngIf="
+                updateEditedMemberForm.get('yob')?.errors?.min ||
+                updateEditedMemberForm.get('yob')?.errors?.max
+              "
+              class="error-msg"
+            >
+              Enter a valid year
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row container-dimensions">
+        <div class="col-12">
+          <div class="registered-container">
+            <span class="radio-button-title">Registered in CoWIN?*</span>
+            <p-radioButton
+              name="registeredInCowin"
+              [value]=true
+              label="Yes"
+              formControlName="registeredInCowin"
+              (onClick)="setUpdatedEditedMemberFormValidator('Yes')"
+            ></p-radioButton>
+            <p-radioButton
+              name="registeredInCowin"
+              [value]=false
+              label="No"
+              formControlName="registeredInCowin"
+              (onClick)="setUpdatedEditedMemberFormValidator('No')"
+            ></p-radioButton>
+          </div>
+        </div>
+        <div
+          class="col-12"
+          style="padding-top: 20px;"
+          *ngIf="
+            updateEditedMemberForm.get('registeredInCowin')?.value === true
+          "
+        >
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="beneficiaryReferenceId"
+                type="number"
+                pInputText
+                formControlName="beneficiaryReferenceId"
+                (focus)="setUpdatedEditedMemberFormValidator('Yes')"
+              />
+              <label for="float-input">Beneficiary ReferenceId</label>
+            </span>
+          </div>
+          <div
+      *ngIf="showFormControlInvalid(updateEditedMemberForm.get('beneficiaryReferenceId')!)"
+      class="error-block"
+    >
+      <div
+        *ngIf="updateEditedMemberForm.get('beneficiaryReferenceId')?.errors?.required"
+        class="error-msg"
+      >
+        Beneficiary Reference Id is required
+      </div>
+    </div>
+        </div>
+      </div>
+    </form>
+    <div class="update-button-add-members">
+      <button
+        pButton
+        pRipple
+        type="button"
+        (click)="updateRow()"
+        label="Update"
+        class="p-button-outlined p-button-success"
+      ></button>
+    </div>
+  </div>
+</p-sidebar>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<p-toast [baseZIndex]="12000"></p-toast>

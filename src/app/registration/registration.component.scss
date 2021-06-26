@@ -1,0 +1,160 @@
+.form-container{
+  width: 100%;
+  padding: 25px;
+  z-index: 0;
+  .form{
+    border: 1px solid rgba(126, 143, 150, 0.3);
+    border-radius: 8px;
+    padding: 15px 25px 25px 25px;
+    height: auto;
+    min-height: 450px;
+    min-width: 720px;
+  }
+}
+.error-block{
+  .error-msg{
+    color: red;
+  }
+}
+
+.ng-invalid.ng-touched{
+  border-color:red;
+  + label{
+    color:red;
+  }
+
+}
+.container-dimensions{
+  padding: 10px 5px;
+  display:flex;
+  align-items: center;
+
+  .col-6, .col-4{
+    margin-bottom: 20px;
+  }
+  .gender-container{
+    .radio-button-title{
+      display: inline-flex;
+      width: 150px;
+    }
+    p-radiobutton{
+      padding-right: 30px;
+      width: 100px;
+    }
+  }
+  .registered-container{
+    .radio-button-title{
+      padding-right: 30px;
+    }
+    p-radiobutton{
+      padding-right: 30px;
+      width: 100px;
+    }
+  }
+
+  .p-inputgroup{
+     span{
+      width: 100%;
+      .full-width{
+        width: 100%;
+        .p-inputnumber{
+          background-color: red;
+        }
+      }
+    }
+  }
+}
+.error-label{
+  color: red;
+}
+.members-container{
+  border: 1px solid rgba(126, 143, 150, 0.3);
+  border-radius: 8px;
+  padding: 25px 25px 25px 25px;
+  min-width: 720px;
+}
+.member-container-title{
+  padding-top: 20px;
+  min-width: 720px;
+}
+.p-sidebar1{
+  width: 40% !important;
+  div.p-sidebar-right{
+    width: 40%;
+  }
+}
+.submit-button-add-members{
+  display: flex;
+  justify-content: center;
+}
+.update-button-add-members{
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+.hide-column{
+  display: none;
+}
+.show-fields{
+  display: flex;
+}
+.seperator{
+  padding-bottom: 25px;
+}
+
+.submit{
+  padding: 10px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 720px;
+}
+.p-inputtext{
+  display: inline-block;
+  margin: 0 5px;
+  width: 100%;
+}
+.hidden-edit-button{
+  visibility: hidden;
+  pointer-events: none;
+}
+.content-alignment{
+  display: flex;
+  justify-content: space-evenly;
+}
+.pt-25{
+  padding-top: 25px;
+}
+.header-sidebar{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.sidebar-form-container {
+  border: 1px solid rgba(126, 143, 150, 0.3);
+  border-radius: 8px;
+  padding: 15px;
+}
+:host {
+  ::ng-deep {
+    .p-sidebar .p-sidebar-header + .p-sidebar-content::-webkit-scrollbar {
+      display: none;
+    }
+    .p-dialog-mask{
+      z-index: 1 !important;
+    }
+    .p-dialog{
+      z-index: 1 !important;
+    }
+
+  }
+}
+#recaptcha-container{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.send-otp{
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,170 @@
+<nav class="navbar navbar-light bg-light autorabit-nav">
+  <div class="col-2 nav-content">
+    <img
+      alt="logo"
+      src="../../assets/ar-logo-long.png"
+      style="width: 100%; height: auto; padding-left: 10px"
+    />
+  </div>
+  <div class="col-8 nav-content">
+    <span class="header">Covid-19 Vaccination Drive</span>
+  </div>
+  <div class="col-2 nav-content">
+    <button
+      pButton
+      pRipple
+      label="Registered User?"
+      (click)="showMaximizableDialog()"
+      [ngClass]="{ 'toggle-visible': !buttonToggle }"
+      class="p-button-outlined navbar-button"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="LogOut"
+      (click)="logOut()"
+      [ngClass]="{ 'toggle-visible': buttonToggle }"
+      class="p-button-outlined navbar-button"
+    ></button>
+  </div>
+</nav>
+<p-dialog
+  header=" "
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '100%', 'max-width': '700px' }"
+  [baseZIndex]="1"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="formReset()"
+>
+  <div class="dialog-container-box">
+    <div
+      *ngIf="!toggleOTPVisibility"
+      style="padding: 20px 5px"
+      class="dialog-container row"
+    >
+      <div class="form-container">
+        <form [formGroup]="registrationForm">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input
+                id="mobile-number"
+                type="number"
+                pInputText
+                formControlName="phoneNo"
+              />
+              <label for="float-input">Mobile Number as Aadhar*</label>
+            </span>
+          </div>
+          <div
+            *ngIf="showFormControlInvalid(registrationForm.get('phoneNo')!)"
+            class="error-block"
+          >
+            <div
+              *ngIf="registrationForm.get('phoneNo')?.errors?.required"
+              class="error-msg"
+            >
+              Mobile Number is required
+            </div>
+            <div
+              *ngIf="
+                registrationForm.get('phoneNo')?.errors?.min ||
+                registrationForm.get('phoneNo')?.errors?.max
+              "
+              class="error-msg"
+            >
+              Mobile number must be of 10 digits
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="recatcha-container-center">
+        <div id="recaptcha-container"></div>
+      </div>
+     
+      <div class="send-otp">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Send OTP"
+          (click)="toggleOTPVisibilityController()"
+          [disabled]="registrationForm.get('phoneNo')?.value === null"
+          class="p-button-outlined"
+        ></button>
+      </div>
+    </div>
+    <div
+      *ngIf="toggleOTPVisibility"
+      style="padding: 20px 5px"
+      class="dialog-container row"
+    >
+      <p style="padding: 5px 15px">
+        A verification code has been sent to {{ mobileFirstTwo }} *****
+        {{ mobileLastThree }}
+      </p>
+      <div class="otp-container">
+        <form [formGroup]="registrationForm">
+          <div class="p-inputgroup">
+            <span class="p-float-label">
+              <input type="text" pInputText formControlName="otpvalue" />
+              <label for="float-input">OTP</label>
+            </span>
+          </div>
+          <div
+            *ngIf="showFormControlInvalid(registrationForm.get('otpvalue')!)"
+            class="error-block"
+          >
+            <div
+              *ngIf="registrationForm.get('otpvalue')?.errors?.required"
+              class="error-msg"
+            >
+              OTP is required
+            </div>
+            <div
+              *ngIf="
+                registrationForm.get('otpvalue')?.errors?.min ||
+                registrationForm.get('otpvalue')?.errors?.max
+              "
+              class="error-msg"
+            >
+              OTP is of 4 digits only
+            </div>
+          </div>
+          <div class="resend-otp" style="float:right; margin-top: 10px">
+            <p-button label="Resend OTP"  styleClass="p-button-link" (click)="resendOTP()"></p-button>
+            <!-- <button
+            pButton
+            pRipple
+            type="button"
+            label="Resend OTP"
+            (click)="resendOTP()"
+            class="p-button-outlined"
+          ></button> -->
+          </div>
+        </form>
+      </div>
+      <div class="verify-otp">
+
+        <div id="recaptcha-container" style="visibility: hidden;"></div>
+
+
+        <div class="row" style="display:flex; justify-content: center;">
+          <button
+          pButton
+          pRipple
+          style="width: 80px;"
+          type="button"
+          label="Verify"
+          [disabled]="!registrationForm.valid"
+          (click)="verifyCredentials()"
+          class="p-button-outlined"
+        ></button>
+         </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+<p-toast [baseZIndex]="20000"></p-toast>
+<router-outlet></router-outlet>
